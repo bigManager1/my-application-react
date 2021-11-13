@@ -27,7 +27,6 @@ function Overview () {
     const [color, setColor] = useState("#000000");
     const [estimatedArrival, setEstimatedArrival] = useState("2021-12-12");
     const [currentStatus,setCurrentStatus] = useState();
-    const [achivedStatus,setArchivedStatus] = useState();
     const [currentMaterial, setCurrentMaterial] = useState();
     const [currentPurpose,setCurrentPurpose] = useState();
     const [currentSupplier, setCurrentSupplier] = useState();
@@ -100,29 +99,26 @@ function Overview () {
     async function fetchStatuses(){
         await axios.get('http://localhost:8080/api/resourceStatus')
         .then(result => { 
-            setStatuses(result.data); // only the first member
+            setStatuses(result.data);
     })}
 
     // current date expression 
     const today = new Date();
     const month = ((today.getMonth() +1) <10 ? "0" + String(today.getMonth() + 1) : String(today.getMonth()+1));
-    const day = (today.getDay()) < 10  ? "0" + String(today.getDay()) : String(today.getDay());
+    const day = (today.getDate()) < 10  ? "0" + String(today.getDate()) : String(today.getDate());
     const currentDate =   String(today.getFullYear())+ "-" + month+ "-" + day;
 
     // functions to add new properties
     function addResource(e){
         e.preventDefault();
-
-        console.log(currentStatus.status);
-        
         axios.post('http://localhost:8080/api/resources',{
         id: 0,
-        weight: Math.round(weight).toFixed(2) ,
+        weight: Math.round(weight).toFixed(2),
         price: Math.round(price).toFixed(2),
         color: color,
         purpose: currentPurpose,
         material: currentMaterial,
-        status: currentStatus,
+        status: statuses[1],
         supplier: currentSupplier,
         registry_date: currentDate,
         estimated_arrival: estimatedArrival
@@ -133,8 +129,9 @@ function Overview () {
     // functions to otherwise alter/delete existing properties
 
     function makeArchived(id){
+        console.log(statuses[3]);// gets {id: 8, status: 'Archived'} expects 
         axios.patch('http://localhost:8080/api/resources/'+ id,{
-            status: currentStatus,
+            status: statuses[0],// works in swagger - doesn't work here because of the syntax "" 
         })
         fetchResources();
     }
@@ -152,7 +149,7 @@ function Overview () {
         <div id="main">
             
             <button onClick={() => handleResourceModal()}>{plus}</button>
-            <button onClick={() => handleResourceModal()}> See archived</button>
+            <button onClick={() => setModalArchived(true)}> See archived</button>
 
             {/* Existing resources displayed over 3 panels, based on status*/}
             <div id="panel">
@@ -185,7 +182,9 @@ function Overview () {
                 </h2>
                 <div id="inner">
                 {resources.map(resource => (resource.status.status == "Accepted" ? 
-                    resource.weight + " kg of " + resource.material.title + " for " + resource.purpose.title
+                    <p>{resource.weight} + " kg of " + {resource.material.title} + " for " + {resource.purpose.title} 
+                    <button onClick={()=>makeArchived(resource.id)}>{trash}</button>
+                    </p>
                     : null)
                     )}
                 </div>
