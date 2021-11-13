@@ -1,6 +1,6 @@
 
 import './Styling/App.scss'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router,Routes, Route } from 'react-router-dom';
 import Navigation from './Navigation';
 import Home from'./Components/Home.js';
 import Users from'./Components/Users.js';
@@ -11,6 +11,7 @@ function App() {
   return (
     <div id="main">
       <Router>
+         {/*added Routes here, though worked just fine before*/}
         <Route path='/:page' component={Navigation} />
         <Route exact path='/' component={Navigation} />
         <Route exact path='/' component={Home} />
@@ -18,6 +19,7 @@ function App() {
         <Route exact path='/users' component={Users} />
         <Route exact path='/overview' component={Overview} />
         <Route exact path='/manageOptions' component={ManageOptions} />
+        
       </Router>
     </div>
   );
