@@ -5,7 +5,7 @@ import Navigation from './Navigation';
 import Home from'./Components/Home.js';
 import Users from'./Components/Users.js';
 import PurchaseOverview from'./Components/Purchase/Overview.js';
-import ManagePurchaseOptions from'./Components/ManageOptions.js';
+import ManagePurchaseOptions from'./Components/Purchase/ManageOptions.js';
 import ProductionOverview from'./Components/Production/Overview.js';
 import ManageProductionOptions from'./Components/Production/ManageOptions.js';
 import SalesOverview from'./Components/Sales/Overview.js';

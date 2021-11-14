@@ -115,7 +115,8 @@ function Overview () {
         e.preventDefault();
         axios.post('http://localhost:8080/api/resources',{
         id: 0,
-        weight: Math.round(weight).toFixed(2),
+        original_weight: Math.round(weight).toFixed(2),
+        remaining_weight: Math.round(weight).toFixed(2),
         price: Math.round(price).toFixed(2),
         color: color,
         purpose: currentPurpose,
@@ -130,19 +131,10 @@ function Overview () {
 
     // functions to otherwise alter/delete existing properties
 
-    function makeArchived(id){
-        console.log(statuses[3]);// gets {id: 8, status: 'Archived'} expects 
-        axios.patch('http://localhost:8080/api/resources/'+ id,{
-            status: statuses[0],// works in swagger - doesn't work here because of the syntax "" 
-        })
-        fetchResources();
-    }
-
     function deleteArchived(id){
         axios.delete('http://localhost:8080/api/resources/'+ id)
         fetchResources();
     }
-
 
     // displayed panel
 
@@ -160,7 +152,7 @@ function Overview () {
                 </h2>
                 <div id="inner">
                     {resources.map(resource => (resource.status.status == "To Evaluate" ? 
-                    resource.weight + " kg of " + resource.material.title + " for " + resource.purpose.title + " due on " + resource.estimated_arrival
+                    resource.original_weight + " kg of " + resource.material.title + " for " + resource.purpose.title + " due on " + resource.estimated_arrival
                     : null)
                     )}
                 </div>
@@ -172,7 +164,7 @@ function Overview () {
                 </h2>
                 <div id="inner">
                 {resources.map(resource => (resource.status.status == "Returned" ? 
-                    resource.weight + " kg of " + resource.material.title + " for " + resource.purpose.title
+                    resource.original_weight + " kg of " + resource.material.title + " for " + resource.purpose.title
                     : null)
                     )}
                 </div>
@@ -184,9 +176,8 @@ function Overview () {
                 </h2>
                 <div id="inner">
                 {resources.map(resource => (resource.status.status == "Accepted" ? 
-                    <p>{resource.weight} + " kg of " + {resource.material.title} + " for " + {resource.purpose.title} 
-                    <button onClick={()=>makeArchived(resource.id)}>{trash}</button>
-                    </p>
+                    <ul>{resource.remaining_weight} + " kg of " + {resource.material.title} + " for " + {resource.purpose.title} 
+                    </ul>
                     : null)
                     )}
                 </div>
@@ -201,9 +192,9 @@ function Overview () {
                     <button onClick={() => setModalArchived(false)}> Close </button>
                     <div id="inner">
                     {resources.map(resource => (resource.status.status == "Archived" ? 
-                    <p>{resource.weight} + " kg of " + {resource.material.title}
+                    <ul>{resource.remaining_weight} + " kg of " + {resource.material.title}
                     <button onClick={() => deleteArchived(resource.id)}>{trash}</button>
-                    </p>
+                    </ul>
                     : null)
                     )}
                 </div>

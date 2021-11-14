@@ -12,8 +12,12 @@ const Navigation = () => {
       <div>
         <NavLink page='home' />
         <NavLink page='users' />
-        <NavLink page='overview' />
-        <NavLink page='manageOptions' />
+        <NavLink page='purchaseOverview' />
+        <NavLink page='managePurchaseOptions' />
+        <NavLink page='productionOverview' />
+        <NavLink page='manageProductionOptions' />
+        <NavLink page='salesOverview' />
+        <NavLink page='manageSalesOverview)' />
       </div>
     );
   };
