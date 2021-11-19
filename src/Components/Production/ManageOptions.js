@@ -7,6 +7,8 @@ import Modal, { setAppElement } from 'react-modal';
 
 function ManageOptions() {
 
+  const url = "https://management-backend-app.herokuapp.com/";
+
   // icons
   const plus = <FontAwesomeIcon icon={faPlus} />
   const trash = <FontAwesomeIcon icon={faTrash} />
@@ -35,14 +37,14 @@ function ManageOptions() {
   }, []);
 
   async function fetchProductTypes() {
-    await axios.get('http://localhost:8080/api/productType')
+    await axios.get(url+'api/productType')
       .then(result => {
         setProductTypes(result.data);
       })
   }
 
   async function fetchProductCategories() {
-    await axios.get('http://localhost:8080/api/productCategory')
+    await axios.get(url+'api/productCategory')
       .then(result => {
         setProductCategories(result.data);
       })
@@ -51,7 +53,7 @@ function ManageOptions() {
 
   function addProductType(e) {
     e.preventDefault();
-    axios.post('http://localhost:8080/api/productType', {
+    axios.post(url+'api/productType', {
       id: 0,
       productCategoryID: currentProductCategoryID,
       title: currentTitle,
@@ -62,7 +64,7 @@ function ManageOptions() {
 
   async function addProductCategory(e) {
     e.preventDefault();
-    axios.post('http://localhost:8080/api/productCategory', {
+    axios.post(url+'api/productCategory', {
       id: 0,
       title: currentTitle,
     }).then(() => fetchProductCategories());
@@ -70,12 +72,12 @@ function ManageOptions() {
   }
 
   async function deleteProductType(id) {
-    axios.delete('http://localhost:8080/api/productType/' + id)
+    axios.delete(url+'api/productType/' + id)
       .then(() => fetchProductTypes());
   }
 
   async function deleteProductCategory(id) {
-    axios.delete('http://localhost:8080/api/productCategory/' + id)
+    axios.delete(url+'api/productCategory/' + id)
       .then(() => fetchProductCategories());
   }
 

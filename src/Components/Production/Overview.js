@@ -8,6 +8,7 @@ import Modal, { setAppElement } from 'react-modal';
 
 function Overview(){
 
+    const url = "https://management-backend-app.herokuapp.com/";
     // icons
     const plus = <FontAwesomeIcon icon={faPlus} />
     const trash = <FontAwesomeIcon icon={faTrash} />
@@ -60,34 +61,34 @@ function Overview(){
     }, []);
 
     async function fetchSuppliers(){
-        await axios.get('http://localhost:8080/api/resourceSupplier')
+        await axios.get(url+'api/resourceSupplier')
         .then(result => { 
             setSuppliers(result.data);
     })}
 
     async function fetchStatuses(){
-        await axios.get('http://localhost:8080/api/resourceStatus')
+        await axios.get(url+'api/resourceStatus')
         .then(result => { 
             setStatuses(result.data);
     })}
 
     // fetch product types
     async function fetchProductTypes(){
-        await axios.get('http://localhost:8080/api/productType')
+        await axios.get(url+'api/productType')
         .then(result => { 
             setProductTypes(result.data);
         })
     }
 
     async function fetchResources(){
-        await axios.get('http://localhost:8080/api/resources')
+        await axios.get(url+'api/resources')
         .then(result => { 
             setResources(result.data);
     })}
 
     // fetch supplier feedback
     async function fetchSupplierFeedback(){
-        await axios.get('http://localhost:8080/api/supplierFeedback')
+        await axios.get(url+'api/supplierFeedback')
         .then(result => { 
             setSupplierFeedback(result.data);
         })
@@ -95,7 +96,7 @@ function Overview(){
 
     // add supplier feedback
     function addSupplierFeedback(){
-        axios.post('http://localhost:8080/api/supplierFeedback',{
+        axios.post(url+'api/supplierFeedback',{
             id: 0,
             reasoning: currentReasoning,
             supplierID: currentSupplierID
@@ -106,7 +107,7 @@ function Overview(){
 
     // fetch evaluations
     async function fetchResourceEvaluations(){
-        await axios.get('http://localhost:8080/api/evaluatedResources')
+        await axios.get(url+'api/evaluatedResources')
         .then(result => { 
             setResourceEvaluations(result.data);
         })
@@ -116,7 +117,7 @@ function Overview(){
     
     function addResourceEvaluation(e){
         e.preventDefault();
-        axios.post('http://localhost:8080/api/supplierFeedback',{
+        axios.post(url+'api/supplierFeedback',{
             id: 0,
             acceptable: currentAcceptability,
             received_at: currentDate,
@@ -130,11 +131,11 @@ function Overview(){
 
     function manageResourceStatus(){
         (currentAcceptability ? 
-        axios.patch('http://localhost:8080/api/resources/'+currentResourceID +'/'+statuses[1], {
+        axios.patch(url+'api/resources/'+currentResourceID +'/'+statuses[1], {
             status: statuses[1]
         }).catch((error) => console.log('Error: ', error))
         :
-        axios.patch('http://localhost:8080/api/resources/'+currentResourceID +'/'+statuses[2], {
+        axios.patch(url+'api/resources/'+currentResourceID +'/'+statuses[2], {
             status: statuses[2]
         }).catch((error) => console.log('Error: ', error))
         );
@@ -142,14 +143,14 @@ function Overview(){
     }
 
     function manageProductPlanCompletion(id){
-        axios.patch('http://localhost:8080/api/productPlan/'+id +'/'+ true, { // change last argument
+        axios.patch(url+'api/productPlan/'+id +'/'+ true, { // change last argument
             done: true
         }).catch((error) => console.log('Error: ', error))
     }
 
     // fetch product profiles
     async function fetchProductPlans(){
-        await axios.get('http://localhost:8080/api/productPlan')
+        await axios.get(url+'api/productPlan')
         .then(result => { 
             setProductPlans(result.data);
         });
@@ -159,7 +160,7 @@ function Overview(){
 
     function addProductPlan(e){
         e.preventDefault();
-        axios.post('http://localhost:8080/api/productPlan',{
+        axios.post(url+'api/productPlan',{
             id: 0,
             done: false,
             product_type: currentProductType,
