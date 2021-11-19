@@ -7,7 +7,7 @@ import Modal, { setAppElement } from 'react-modal';
 // purchase interface
 
 function Overview () {
-
+    const url = "https://management-backend-app.herokuapp.com/";
     // icons
     const plus = <FontAwesomeIcon icon={faPlus} />
     const trash = <FontAwesomeIcon icon={faTrash} />
@@ -35,20 +35,20 @@ function Overview () {
 
     // functions to handle select events
     async function handleMaterial(target){
-        await axios.get('http://localhost:8080/api/resourceMaterial/'+ target)
+        await axios.get(url+'api/resourceMaterial/'+ target)
         .then(result => { 
             setCurrentMaterial(result.data);
         })
     }
     async function handlePurpose(target){
-        await axios.get('http://localhost:8080/api/resourcePurpose/'+ target)
+        await axios.get(url+'api/resourcePurpose/'+ target)
         .then(result => { 
             setCurrentPurpose(result.data);
         })
     }
 
     async function handleSupplier(target){
-        await axios.get('http://localhost:8080/api/resourceSupplier/'+ target)
+        await axios.get(url+'api/resourceSupplier/'+ target)
         .then(result => { 
             setCurrentSupplier(result.data);
         })
@@ -74,32 +74,32 @@ function Overview () {
 
 // fetching data functions
     async function fetchPurpose(){
-        await axios.get('http://localhost:8080/api/resourcePurpose')
+        await axios.get(url+'api/resourcePurpose')
         .then(result => { 
             setPurposes(result.data);
     })}
 
 
     async function fetchMaterial(){
-        await axios.get('http://localhost:8080/api/resourceMaterial')
+        await axios.get(url+'api/resourceMaterial')
         .then(result => { 
             setMaterials(result.data);
     })}
     
     async function fetchSupplier(){
-        await axios.get('http://localhost:8080/api/resourceSupplier')
+        await axios.get(url+'api/resourceSupplier')
         .then(result => { 
             setSuppliers(result.data);
     })}
 
     async function fetchResources(){
-        await axios.get('http://localhost:8080/api/resources')
+        await axios.get(url+'api/resources')
         .then(result => { 
             setResources(result.data);
     })}
 
     async function fetchStatuses(){
-        await axios.get('http://localhost:8080/api/resourceStatus')
+        await axios.get(url+'api/resourceStatus')
         .then(result => { 
             setStatuses(result.data);
     })}
@@ -113,7 +113,7 @@ function Overview () {
     // functions to add new properties
     function addResource(e){
         e.preventDefault();
-        axios.post('http://localhost:8080/api/resources',{
+        axios.post(url+'api/resources',{
         id: 0,
         original_weight: Math.round(weight).toFixed(2),
         remaining_weight: Math.round(weight).toFixed(2),
@@ -121,7 +121,7 @@ function Overview () {
         color: color,
         purpose: currentPurpose,
         material: currentMaterial,
-        status: statuses[1],
+        status: statuses[2],
         supplier: currentSupplier,
         registry_date: currentDate,
         estimated_arrival: estimatedArrival
@@ -132,7 +132,7 @@ function Overview () {
     // functions to otherwise alter/delete existing properties
 
     function deleteArchived(id){
-        axios.delete('http://localhost:8080/api/resources/'+ id)
+        axios.delete('api/resources/'+ id)
         fetchResources();
     }
 
@@ -152,7 +152,7 @@ function Overview () {
                 </h2>
                 <div id="inner">
                     {resources.map(resource => (resource.status.status == "To Evaluate" ? 
-                    resource.original_weight + " kg of " + resource.material.title + " for " + resource.purpose.title + " due on " + resource.estimated_arrival
+                    <ul>{resource.original_weight} kg of {resource.material.title} for {resource.purpose.title} due on {resource.estimated_arrival}</ul>
                     : null)
                     )}
                 </div>
@@ -164,7 +164,7 @@ function Overview () {
                 </h2>
                 <div id="inner">
                 {resources.map(resource => (resource.status.status == "Returned" ? 
-                    resource.original_weight + " kg of " + resource.material.title + " for " + resource.purpose.title
+                    <ul>{resource.original_weight} kg of {resource.material.title} for {resource.purpose.title}</ul>
                     : null)
                     )}
                 </div>
@@ -176,7 +176,7 @@ function Overview () {
                 </h2>
                 <div id="inner">
                 {resources.map(resource => (resource.status.status == "Accepted" ? 
-                    <ul>{resource.remaining_weight} + " kg of " + {resource.material.title} + " for " + {resource.purpose.title} 
+                    <ul>{resource.remaining_weight} kg of {resource.material.title} for {resource.purpose.title} 
                     </ul>
                     : null)
                     )}
@@ -192,7 +192,7 @@ function Overview () {
                     <button onClick={() => setModalArchived(false)}> Close </button>
                     <div id="inner">
                     {resources.map(resource => (resource.status.status == "Archived" ? 
-                    <ul>{resource.remaining_weight} + " kg of " + {resource.material.title}
+                    <ul>{resource.remaining_weight} kg of {resource.material.title}
                     <button onClick={() => deleteArchived(resource.id)}>{trash}</button>
                     </ul>
                     : null)

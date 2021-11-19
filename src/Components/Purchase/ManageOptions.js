@@ -9,7 +9,7 @@ import Modal, { setAppElement } from 'react-modal';
 
 
 function ManageOptions () {
-
+const url = "https://management-backend-app.herokuapp.com/";
 // panels
 const [showSuppliers, setShowSuppliers] = useState(false);
 const [showPurpose, setShowPurpose] = useState(false);
@@ -48,7 +48,7 @@ useEffect(() => {
 // fetching data functions
 
 function fetchPurpose(){
-    axios.get('http://localhost:8080/api/resourcePurpose')
+    axios.get(url+'api/resourcePurpose')
     .then(result => { 
       setPurposes(result.data);
     })
@@ -56,14 +56,14 @@ function fetchPurpose(){
 
 
 function fetchMaterial(){
-    axios.get('http://localhost:8080/api/resourceMaterial')
+    axios.get(url+'api/resourceMaterial')
     .then(result => { 
       setMaterials(result.data);
     })
 }
 
 function fetchSupplier(){
-    axios.get('http://localhost:8080/api/resourceSupplier')
+    axios.get(url+'api/resourceSupplier')
     .then(result => { 
       setSuppliers(result.data);
     })
@@ -73,7 +73,7 @@ function fetchSupplier(){
 
 function addPurpose(e){
     e.preventDefault();
-    axios.post('http://localhost:8080/api/resourcePurpose',{
+    axios.post(url+'api/resourcePurpose',{
         id: 0,
         title: newTitle
     }).then(()=> fetchPurpose());
@@ -81,7 +81,7 @@ function addPurpose(e){
 
 function addMaterial(e){
     e.preventDefault();
-    axios.post('http://localhost:8080/api/resourceMaterial',{
+    axios.post(url+'api/resourceMaterial',{
         id: 0,
         title: newTitle
     }).then(()=> fetchMaterial());
@@ -89,7 +89,7 @@ function addMaterial(e){
 
 function addSupplier(e){
     e.preventDefault();
-    axios.post('http://localhost:8080/api/resourceSupplier',{
+    axios.post(url+'api/resourceSupplier',{
         id: 0,
         title: newTitle
     }).then(()=> fetchSupplier());
@@ -98,15 +98,15 @@ function addSupplier(e){
 // deleting data functions
 
 function deletePurpose(id){
-    axios.delete('http://localhost:8080/api/resourcePurpose/' + id)
+    axios.delete(url+'api/resourcePurpose/' + id)
     .then(()=> fetchPurpose());
 }
 function deleteMaterial(id){
-    axios.delete('http://localhost:8080/api/resourceMaterial/' + id)
+    axios.delete(url+'api/resourceMaterial/' + id)
     .then(()=> fetchMaterial());
 }
 function deleteSupplier(id){
-    axios.delete('http://localhost:8080/api/resourceSupplier/' + id)
+    axios.delete(url+'api/resourceSupplier/' + id)
     .then(()=> fetchSupplier());
 }
 
