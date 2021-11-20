@@ -3,6 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUsers, faEnvelope, faComment, faInbox, faFileDownload, faDownload } from '@fortawesome/free-solid-svg-icons';
 import "./Styling/Navbar.scss";
 //Navigation bar where all choices are presented in the purchase interface
+
+// good optionals
+
+// send emails for externals
+// send chats for internals
+// look in inbox for internal chats
+// download a report (choose from API)
+
+
+
 const Navigation = () => {
   // icons
   const home = <FontAwesomeIcon icon={faHome} />
@@ -36,8 +46,8 @@ const Navigation = () => {
         </div>
         <div class="lower">
           <span class="details">{displayDate}</span>
-          <span class="details" >Welcome, Ugne</span> {/*add a prop upon login add*/}
-          <button class="navButton" id="Wsmall">{download}}</button>
+          
+          <button class="navButton" id="Wsmall">{download}</button>
           <button class="navButton" id="Wsmall">{email}</button>
           <button class="navButton" id="Wsmall">{message}</button>
           <button class="navButton" id="Wsmall">{inbox}</button>

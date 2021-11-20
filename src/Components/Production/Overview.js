@@ -6,6 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import Modal, { setAppElement } from 'react-modal';
 import "C:/Users/umada/my-application/src/Styling/Main.scss";
+
+// finish product plan modal
+// fix patch requests 
+// 
+// 
+
+
 function Overview(){
 
     const url = "https://management-backend-app.herokuapp.com/";
@@ -21,7 +28,7 @@ function Overview(){
 
     // panels
 
-    const [showResourceEvaluation, setShowResourceEvaluation] = useState(false);
+    const [showResourceEvaluation, setShowResourceEvaluation] = useState(true);
     const [showProductPlans, setShowProductPlans] = useState(false);
 
     // modal dependencies
@@ -200,17 +207,19 @@ function Overview(){
             <div class= "display">
             {/*show resourceEvaluations (show resources with 'to evaluate' status)*/}
             {showResourceEvaluation ? 
-            <div>
-                <div>
+            <div class = "fullPanel">
+                <div class = "halfPanel">
                 <h2>The following resources are waiting for evaluation: </h2>
                 {resources.map(resource => (resource.status.status == "To Evaluate" ? 
-                    <ul key={resource.id} onMouseOver={()=> setCurrentResourceID(resource.id)}>{resource.original_weight} + " kg of " + {resource.material.title}
-                    <button onClick={() => setModalSupplierFeedback(true)}>Evaluate</button>
+                    <ul key={resource.id} onMouseOver={()=> setCurrentResourceID(resource.id)}>
+                    <button class="changesButton" onClick={() => setModalSupplierFeedback(true)}>Evaluate</button>    
+                    {resource.original_weight} + " kg of " + {resource.material.title}
                     </ul>
                     : null)
                 )}
                 </div>
-                <div>
+
+                <div class = "halfPanel" id="end">
                 <h2>Current evaluations</h2>
                 {resourceEvaluations.map(evaluation =>
                     <ul key={evaluation.id}> {evaluation.received_at} 
@@ -221,6 +230,7 @@ function Overview(){
                     </ul>
                     )}
                 </div>
+
             </div>
             
             :
@@ -229,18 +239,19 @@ function Overview(){
             {/*show product plans*/}
 
             {showProductPlans ? 
-                <div>
-                <div>
-                <h2>The following resources can be assigned to products</h2>
+                <div class = "fullPanel">
+                <div class = "halfPanel">
+                <h2>Assign resources to product plans</h2>
                 {resources.map(resource => (resource.status.status == "Accepted" ? 
                     <ul key={resource.id} onMouseOver={()=> setCurrentResourceID(resource.id)}>
-                        {resource.remaining_weight} + " kg of " + {resource.material.title}
+                        {resource.remaining_weight} kg of {resource.material.title}
                     <button onClick={(e) => setModalProductPlan(true)}>Assign</button>
                     </ul>
                     : null)
                     )}
                 </div>
-                <div>
+                <div class = "halfPanel" id="end">
+                <h2>Current product plans</h2>    
                 {productPlans.map(plan =>
                     <ul key={plan.id} onMouseOver={()=> setCurrentResourceID(plan.id)}>
                         {plan.estimated_quantity} of {plan.product_type.type} {plan.product_type.title} ({plan.product_type.productCategoryID})

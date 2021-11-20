@@ -6,6 +6,32 @@ import Modal, { setAppElement } from 'react-modal';
 import "C:/Users/umada/my-application/src/Styling/Main.scss";
 // purchase interface
 
+// crucials
+// add new resources (to evaluate) +
+// see all resources (purchase) depending on status + 
+// for returned resources, make 'Put' request to replace them when new one is negotiated (separate icon)
+// see supplier feedback based on supplier
+// 
+
+
+// back-end related:
+// make api delete archive resources when there are more than 200
+
+
+
+
+// Good optionals
+
+// see weight/price range based on material for different resources
+// basically : choose material -> see all resources ever purhased on a graph where 
+// y kg/price, x supplier (each suppliers' price range) (color entries by )
+// 
+
+// see weight/price for
+
+
+
+
 function Overview () {
     const url = "https://management-backend-app.herokuapp.com/";
     // icons
@@ -24,8 +50,8 @@ function Overview () {
     const [modalArchived,setModalArchived] = useState(false);
 
     // hooks for adding a new resource
-    const [weight, setWeight] = useState(1.0);
-    const [price, setPrice] = useState(1.0);
+    const [weight, setWeight] = useState(1);
+    const [price, setPrice] = useState(1);
     const [color, setColor] = useState("#000000");
     const [estimatedArrival, setEstimatedArrival] = useState("2021-12-12");
     const [currentStatus,setCurrentStatus] = useState();
@@ -121,7 +147,7 @@ function Overview () {
         color: color,
         purpose: currentPurpose,
         material: currentMaterial,
-        status: statuses[2],
+        status: statuses[0],
         supplier: currentSupplier,
         registry_date: currentDate,
         estimated_arrival: estimatedArrival
@@ -215,12 +241,12 @@ function Overview () {
 
                         <label>
                             Weight
-                            <input type = "number" step={0.1} precision={1} onChange={(e) => setWeight(e.target.value)}></input>
+                            <input type = "number" min="0" step={10} precision={0.1} onChange={(e) => setWeight(e.target.value)}></input>
                         </label>
                         
                         <label>
                             Price
-                            <input type = "number" step={0.1} precision={1} onChange={(e) => setPrice(e.target.value)}></input>   
+                            <input type = "number" min="0" step={10} precision={0.1} onChange={(e) => setPrice(e.target.value)}></input>   
                         </label>
                         
                         <label>

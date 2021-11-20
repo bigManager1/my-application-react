@@ -1,7 +1,12 @@
 
+import {useEffect, useState } from "react";
+import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
+import Modal, { setAppElement } from 'react-modal';
+import "C:/Users/umada/my-application/src/Styling/Main.scss";
 
-// add final 
-
+// add 
 /*
 [
   {
@@ -18,11 +23,20 @@
 
 function ManageOptions(){
 
-    return(
-        <div class="main">
+  const url = "https://management-backend-app.herokuapp.com/";
 
-            
-        </div>
+  
+
+    return(
+      <div class="main" >
+          <div class="selection">
+          
+          </div>
+
+          <div class="display">
+
+          </div>
+      </div>
     );
 }
 
