@@ -4,6 +4,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import Modal, { setAppElement } from 'react-modal';
+import "C:/Users/umada/my-application/src/Styling/Main.scss";
 
 function ManageOptions() {
 
@@ -91,16 +92,17 @@ function ManageOptions() {
   }
 
   return (
-    <div id="main">
+    <div class="main">
 
-      <div id="selection">
-        <button onClick={() => handleTypes()}>Product Types</button>
-        <button onClick={() => handleCategories()}>Product Categories</button>
+      <div class="selection">
+        <button class="selectionButton" onClick={() => handleTypes()}>Product Types</button>
+        <button class="selectionButton" onClick={() => handleCategories()}>Product Categories</button>
       </div>
 
-      <div id="display">
+      <div class="display">
 
         {/*type pannel*/}
+        
         {showProductTypes ?
           <div id="inner">
             <button onClick={() => setModalProductType(true)}>{plus}</button>
@@ -119,7 +121,7 @@ function ManageOptions() {
           </div>
           :
           <></>}
-      </div>
+      
 
       {/*Modals*/}
       <div> {/*Type modal*/}
@@ -157,6 +159,7 @@ function ManageOptions() {
         </Modal>
       </div>
 
+      </div>
     </div>
   );
 }

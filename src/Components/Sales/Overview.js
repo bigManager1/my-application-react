@@ -2,7 +2,7 @@
 function Overview(){
 
     return(
-        <div id="main">
+        <div class="main">
 
             
         </div>

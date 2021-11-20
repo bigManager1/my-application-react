@@ -5,7 +5,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import Modal, { setAppElement } from 'react-modal';
-
+import "C:/Users/umada/my-application/src/Styling/Main.scss";
 function Overview(){
 
     const url = "https://management-backend-app.herokuapp.com/";
@@ -190,10 +190,14 @@ function Overview(){
     }
 
     return(
-        <div id="main">
+        <div class="main">
             {/**/}
-            <button onClick={() => handleEvaluations()}>Manage Evaluations</button>
-            <button onClick={() => handleProjectPlans()}>Manage Product planning</button>
+            <div class = "selection">
+            <button class="selectionButton" onClick={() => handleEvaluations()}>Manage Evaluations</button>
+            <button class="selectionButton" onClick={() => handleProjectPlans()}>Manage Product planning</button>
+            </div>
+
+            <div class= "display">
             {/*show resourceEvaluations (show resources with 'to evaluate' status)*/}
             {showResourceEvaluation ? 
             <div>
@@ -312,7 +316,7 @@ function Overview(){
                 </Modal>
             </div>
 
-
+            </div>
         </div>
     )
 }
