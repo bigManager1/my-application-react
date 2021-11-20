@@ -37,10 +37,10 @@ const Navigation = () => {
         <div class="lower">
           <span class="details">{displayDate}</span>
           <span class="details" >Welcome, Ugne</span> {/*add a prop upon login add*/}
-          <button class="navButton" id="small">{download}}</button>
-          <button class="navButton" id="small">{email}</button>
-          <button class="navButton" id="small">{message}</button>
-          <button class="navButton" id="small">{inbox}</button>
+          <button class="navButton" id="Wsmall">{download}}</button>
+          <button class="navButton" id="Wsmall">{email}</button>
+          <button class="navButton" id="Wsmall">{message}</button>
+          <button class="navButton" id="Wsmall">{inbox}</button>
         </div>
       </div>
     );

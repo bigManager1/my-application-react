@@ -33,7 +33,7 @@ body{
     margin-top: 10px;
     margin-bottom: 5px;
     width: 100%;
-    text-align: center;
+    text-align: right;
     display: block;
 }
 
@@ -58,6 +58,11 @@ body{
 #small.navButton{
     height: 100%;
     width: 45px;
+}
+
+#Wsmall.navButton{
+    height: 100%;
+    width: 5%
 }
 
 
