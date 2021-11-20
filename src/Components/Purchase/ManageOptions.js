@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import Modal, { setAppElement } from 'react-modal';
-
+import "C:/Users/umada/my-application/src/Styling/Main.scss";
 
 // purchase interface 
 
@@ -132,15 +132,15 @@ function handleSupplier(){
 
     return(
 
-        <div id="main">
-            <div id="selection">
+        <div class="main">
+            <div class="selection">
 
-                <button onClick={() => handlePurpose()}>Purpose</button>
-                <button onClick={() => handleMaterial()}>Material</button>
-                <button onClick={() => handleSupplier()}>Supplier</button>
+                <button class="selectionButton" onClick={() => handlePurpose()}>Purpose</button>
+                <button class="selectionButton" onClick={() => handleMaterial()}>Material</button>
+                <button class="selectionButton" onClick={() => handleSupplier()}>Supplier</button>
 
             </div>
-            <div id="display">
+            <div class="display">
 
             {/*purpose pannel*/}
             {showPurpose ?
@@ -200,8 +200,7 @@ function handleSupplier(){
             </div>
             :
             <></>}
-            </div>
-
+            
             <div> {/*Material modal*/}
                 <Modal
                 isOpen={modalSupplier}
@@ -218,6 +217,8 @@ function handleSupplier(){
                     <></>}
 
                 </Modal>
+            </div>
+            
             </div>
         </div>
     )

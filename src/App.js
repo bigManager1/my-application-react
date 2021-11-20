@@ -10,10 +10,11 @@ import ProductionOverview from'./Components/Production/Overview.js';
 import ManageProductionOptions from'./Components/Production/ManageOptions.js';
 import SalesOverview from'./Components/Sales/Overview.js';
 import ManageSalesOptions from'./Components/Sales/ManageOptions.js';
+import "./Styling/Navbar.scss";
 
 function App() {
   return (
-    <div id="main">
+    <div class="full">
       <Router>
          {/*added Routes here, though worked just fine before*/}
         <Route path='/:page' component={Navigation} />

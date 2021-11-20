@@ -19,7 +19,7 @@
 function ManageOptions(){
 
     return(
-        <div id="main">
+        <div class="main">
 
             
         </div>

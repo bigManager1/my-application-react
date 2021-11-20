@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import Modal, { setAppElement } from 'react-modal';
-
+import "C:/Users/umada/my-application/src/Styling/Main.scss";
 // purchase interface
 
 function Overview () {
@@ -140,17 +140,20 @@ function Overview () {
 
     return(
         
-        <div id="main">
-            
-            <button onClick={() => handleResourceModal()}>{plus}</button>
-            <button onClick={() => setModalArchived(true)}> See archived</button>
+        <div class="main">
 
+            <div class="selection">
+            <button class="selectionButton" onClick={() => handleResourceModal()}>{plus}</button>
+            <button class="selectionButton" onClick={() => setModalArchived(true)}> See archived</button>
+            </div>
+
+            <div class = "display">
             {/* Existing resources displayed over 3 panels, based on status*/}
-            <div id="panel">
+            <div class="panel">
                 <h2>
                     To be evaluated
                 </h2>
-                <div id="inner">
+                <div class="inner">
                     {resources.map(resource => (resource.status.status == "To Evaluate" ? 
                     <ul>{resource.original_weight} kg of {resource.material.title} for {resource.purpose.title} due on {resource.estimated_arrival}</ul>
                     : null)
@@ -158,11 +161,11 @@ function Overview () {
                 </div>
             </div>
 
-            <div id="panel">
+            <div class="panel">
                 <h2>
                     Returned
                 </h2>
-                <div id="inner">
+                <div class="inner">
                 {resources.map(resource => (resource.status.status == "Returned" ? 
                     <ul>{resource.original_weight} kg of {resource.material.title} for {resource.purpose.title}</ul>
                     : null)
@@ -170,11 +173,11 @@ function Overview () {
                 </div>
             </div>
             
-            <div id="panel">
+            <div class="panel" id="end">
                 <h2>
                     Accepted
                 </h2>
-                <div id="inner">
+                <div class="inner">
                 {resources.map(resource => (resource.status.status == "Accepted" ? 
                     <ul>{resource.remaining_weight} kg of {resource.material.title} for {resource.purpose.title} 
                     </ul>
@@ -190,7 +193,7 @@ function Overview () {
                 appElement={document.getElementById('root')}>
                     <h2>Archived resources</h2>
                     <button onClick={() => setModalArchived(false)}> Close </button>
-                    <div id="inner">
+                    <div class="inner">
                     {resources.map(resource => (resource.status.status == "Archived" ? 
                     <ul>{resource.remaining_weight} kg of {resource.material.title}
                     <button onClick={() => deleteArchived(resource.id)}>{trash}</button>
@@ -257,7 +260,7 @@ function Overview () {
                         <button onClick = {e => addResource(e)}>Add a new Resource</button>
                 </Modal>
             </div>
-
+            </div>
         </div>
     )
 }
