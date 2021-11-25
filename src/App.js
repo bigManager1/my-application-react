@@ -16,7 +16,6 @@ function App() {
   return (
     <div class="full">
       <Router>
-         {/*added Routes here, though worked just fine before*/}
         <Route path='/:page' component={Navigation} />
         <Route exact path='/' component={Navigation} />
         <Route exact path='/' component={Home} />
@@ -32,5 +31,5 @@ function App() {
     </div>
   );
 }
-
 export default App;
+
