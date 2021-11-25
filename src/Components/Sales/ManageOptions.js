@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 import {useEffect, useState } from "react";
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,6 +8,11 @@ import Modal, { setAppElement } from 'react-modal';
 import "C:/Users/umada/my-application/src/Styling/Main.scss";
 
 // add 
+=======
+
+// add final 
+
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
 /*
 [
   {
@@ -23,6 +29,7 @@ import "C:/Users/umada/my-application/src/Styling/Main.scss";
 
 function ManageOptions(){
 
+<<<<<<< HEAD
   const url = "https://management-backend-app.herokuapp.com/";
 
   
@@ -37,6 +44,13 @@ function ManageOptions(){
 
           </div>
       </div>
+=======
+    return(
+        <div class="main">
+
+            
+        </div>
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
     );
 }
 

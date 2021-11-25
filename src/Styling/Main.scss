@@ -50,7 +50,11 @@ ul{
     background-color: $medium;
     padding: 5px;
     border-radius: 5px;
+<<<<<<< HEAD
     margin:3px;
+=======
+    margin-top: 5px;
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
 }
 
 .inner{
@@ -67,6 +71,7 @@ ul{
     align-content: center;
 }
 
+<<<<<<< HEAD
 #end.panel{
     margin: 0;
 }
@@ -97,10 +102,20 @@ ul{
 #end.halfPanel{
     margin:0;
 }
+=======
+
+
+#end.panel{
+    margin: 0;
+}
+
+
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
 
 ::-webkit-scrollbar {
     width: 0;
     background: transparent; 
+<<<<<<< HEAD
 }
 
 .additionButton{
@@ -110,4 +125,6 @@ ul{
     border-radius: 5px;
     border: 0;
     margin-bottom: 5px;
+=======
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
 }

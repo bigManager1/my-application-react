@@ -5,10 +5,16 @@ import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import Modal, { setAppElement } from 'react-modal';
 import "C:/Users/umada/my-application/src/Styling/Main.scss";
 
+<<<<<<< HEAD
 // eliminate deletion
 
 // purchase interface 
 
+=======
+// purchase interface 
+
+
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
 function ManageOptions () {
 const url = "https://management-backend-app.herokuapp.com/";
 // panels
@@ -48,8 +54,11 @@ useEffect(() => {
 
 // fetching data functions
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
 function fetchPurpose(){
     axios.get(url+'api/resourcePurpose')
     .then(result => { 
@@ -100,7 +109,10 @@ function addSupplier(e){
 
 // deleting data functions
 
+<<<<<<< HEAD
 // if error 500, pop open a warning modal!!!
+=======
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
 function deletePurpose(id){
     axios.delete(url+'api/resourcePurpose/' + id)
     .then(()=> fetchPurpose());
@@ -149,9 +161,15 @@ function handleSupplier(){
             {/*purpose pannel*/}
             {showPurpose ?
             <div id = "inner">
+<<<<<<< HEAD
                 <button class="additionButton" onClick={() => setModalPurpose(true)}>{plus}</button>
                 {purposes.map(purpose => <ul key={purpose.id}>{purpose.title} 
                 <button onClick = {() => deletePurpose(purpose.id)}>{trash}</button></ul>)}
+=======
+                <button onClick={() => setModalPurpose(true)}>{plus}</button>
+                {purposes.map(purpose => <p key={purpose.id}>{purpose.title} 
+                <button onClick = {() => deletePurpose(purpose.id)}>{trash}</button></p>)}
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
                 {/*map all, add new, delete*/}
             </div>
             :
@@ -173,9 +191,15 @@ function handleSupplier(){
             {/*material pannel*/}
             {showMaterial ?
             <div id = "inner">
+<<<<<<< HEAD
                 <button class="additionButton" onClick={() => setModalMaterial(true)}>{plus}</button>
                 {materials.map(material => <ul key={material.id}>{material.title} 
                 <button onClick = {() => deleteMaterial(material.id)}>{trash}</button></ul>)}
+=======
+                <button onClick={() => setModalMaterial(true)}>{plus}</button>
+                {materials.map(material => <p key={material.id}>{material.title} 
+                <button onClick = {() => deleteMaterial(material.id)}>{trash}</button></p>)}
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
                 {/*map all, add new, delete*/}
             </div>
             :
@@ -197,9 +221,15 @@ function handleSupplier(){
             {/*supplier pannel*/}
             {showSuppliers ?
             <div id = "inner">
+<<<<<<< HEAD
                 <button class="additionButton" onClick={() => setModalSupplier(true)}>{plus}</button>
                 {suppliers.map(supplier => <ul key={supplier.id}>{supplier.title}
                 <button onClick = {() => deleteSupplier(supplier.id)} >{trash}</button></ul>)}
+=======
+                <button onClick={() => setModalSupplier(true)}>{plus}</button>
+                {suppliers.map(supplier => <p key={supplier.id}>{supplier.title}
+                <button onClick = {() => deleteSupplier(supplier.id)} >{trash}</button></p>)}
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
                 {/*map all, add new, delete*/}
             </div>
             :

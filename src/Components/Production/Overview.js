@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import Modal, { setAppElement } from 'react-modal';
 import "C:/Users/umada/my-application/src/Styling/Main.scss";
+<<<<<<< HEAD
 
 // finish product plan modal
 // fix patch requests 
@@ -13,6 +14,8 @@ import "C:/Users/umada/my-application/src/Styling/Main.scss";
 // 
 
 
+=======
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
 function Overview(){
 
     const url = "https://management-backend-app.herokuapp.com/";
@@ -28,7 +31,11 @@ function Overview(){
 
     // panels
 
+<<<<<<< HEAD
     const [showResourceEvaluation, setShowResourceEvaluation] = useState(true);
+=======
+    const [showResourceEvaluation, setShowResourceEvaluation] = useState(false);
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
     const [showProductPlans, setShowProductPlans] = useState(false);
 
     // modal dependencies
@@ -207,6 +214,7 @@ function Overview(){
             <div class= "display">
             {/*show resourceEvaluations (show resources with 'to evaluate' status)*/}
             {showResourceEvaluation ? 
+<<<<<<< HEAD
             <div class = "fullPanel">
                 <div class = "halfPanel">
                 <h2>The following resources are waiting for evaluation: </h2>
@@ -214,12 +222,24 @@ function Overview(){
                     <ul key={resource.id} onMouseOver={()=> setCurrentResourceID(resource.id)}>
                     <button class="changesButton" onClick={() => setModalSupplierFeedback(true)}>Evaluate</button>    
                     {resource.original_weight} + " kg of " + {resource.material.title}
+=======
+            <div>
+                <div>
+                <h2>The following resources are waiting for evaluation: </h2>
+                {resources.map(resource => (resource.status.status == "To Evaluate" ? 
+                    <ul key={resource.id} onMouseOver={()=> setCurrentResourceID(resource.id)}>{resource.original_weight} + " kg of " + {resource.material.title}
+                    <button onClick={() => setModalSupplierFeedback(true)}>Evaluate</button>
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
                     </ul>
                     : null)
                 )}
                 </div>
+<<<<<<< HEAD
 
                 <div class = "halfPanel" id="end">
+=======
+                <div>
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
                 <h2>Current evaluations</h2>
                 {resourceEvaluations.map(evaluation =>
                     <ul key={evaluation.id}> {evaluation.received_at} 
@@ -230,7 +250,10 @@ function Overview(){
                     </ul>
                     )}
                 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
             </div>
             
             :
@@ -239,19 +262,32 @@ function Overview(){
             {/*show product plans*/}
 
             {showProductPlans ? 
+<<<<<<< HEAD
                 <div class = "fullPanel">
                 <div class = "halfPanel">
                 <h2>Assign resources to product plans</h2>
                 {resources.map(resource => (resource.status.status == "Accepted" ? 
                     <ul key={resource.id} onMouseOver={()=> setCurrentResourceID(resource.id)}>
                         {resource.remaining_weight} kg of {resource.material.title}
+=======
+                <div>
+                <div>
+                <h2>The following resources can be assigned to products</h2>
+                {resources.map(resource => (resource.status.status == "Accepted" ? 
+                    <ul key={resource.id} onMouseOver={()=> setCurrentResourceID(resource.id)}>
+                        {resource.remaining_weight} + " kg of " + {resource.material.title}
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
                     <button onClick={(e) => setModalProductPlan(true)}>Assign</button>
                     </ul>
                     : null)
                     )}
                 </div>
+<<<<<<< HEAD
                 <div class = "halfPanel" id="end">
                 <h2>Current product plans</h2>    
+=======
+                <div>
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
                 {productPlans.map(plan =>
                     <ul key={plan.id} onMouseOver={()=> setCurrentResourceID(plan.id)}>
                         {plan.estimated_quantity} of {plan.product_type.type} {plan.product_type.title} ({plan.product_type.productCategoryID})

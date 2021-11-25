@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {useEffect, useState } from "react";
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,6 +16,12 @@ function Users () {
                 
             </div>
         </div>
+=======
+function Users () {
+    return(
+
+        <div> hello Users</div>
+>>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
     )
 }
 
