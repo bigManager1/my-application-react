@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {useEffect, useState } from "react";
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,14 +7,11 @@ import "C:/Users/umada/my-application/src/Styling/Main.scss";
 
 // to do list (cleans in a day)
 // 
-=======
->>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
 
 
 function Home () {
     return(
 
-<<<<<<< HEAD
         <div class="main" >
             <div class="selection">
                 
@@ -25,9 +21,6 @@ function Home () {
 
             </div>
         </div>
-=======
-        <div> hello home</div>
->>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
     )
 }
 

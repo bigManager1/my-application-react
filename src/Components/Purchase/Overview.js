@@ -6,7 +6,6 @@ import Modal, { setAppElement } from 'react-modal';
 import "C:/Users/umada/my-application/src/Styling/Main.scss";
 // purchase interface
 
-<<<<<<< HEAD
 // crucials
 // add new resources (to evaluate) +
 // see all resources (purchase) depending on status + 
@@ -33,8 +32,6 @@ import "C:/Users/umada/my-application/src/Styling/Main.scss";
 
 
 
-=======
->>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
 function Overview () {
     const url = "https://management-backend-app.herokuapp.com/";
     // icons
@@ -53,13 +50,8 @@ function Overview () {
     const [modalArchived,setModalArchived] = useState(false);
 
     // hooks for adding a new resource
-<<<<<<< HEAD
     const [weight, setWeight] = useState(1);
     const [price, setPrice] = useState(1);
-=======
-    const [weight, setWeight] = useState(1.0);
-    const [price, setPrice] = useState(1.0);
->>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
     const [color, setColor] = useState("#000000");
     const [estimatedArrival, setEstimatedArrival] = useState("2021-12-12");
     const [currentStatus,setCurrentStatus] = useState();
@@ -155,11 +147,7 @@ function Overview () {
         color: color,
         purpose: currentPurpose,
         material: currentMaterial,
-<<<<<<< HEAD
         status: statuses[0],
-=======
-        status: statuses[2],
->>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
         supplier: currentSupplier,
         registry_date: currentDate,
         estimated_arrival: estimatedArrival
@@ -253,20 +241,12 @@ function Overview () {
 
                         <label>
                             Weight
-<<<<<<< HEAD
                             <input type = "number" min="0" step={10} precision={0.1} onChange={(e) => setWeight(e.target.value)}></input>
-=======
-                            <input type = "number" step={0.1} precision={1} onChange={(e) => setWeight(e.target.value)}></input>
->>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
                         </label>
                         
                         <label>
                             Price
-<<<<<<< HEAD
                             <input type = "number" min="0" step={10} precision={0.1} onChange={(e) => setPrice(e.target.value)}></input>   
-=======
-                            <input type = "number" step={0.1} precision={1} onChange={(e) => setPrice(e.target.value)}></input>   
->>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
                         </label>
                         
                         <label>

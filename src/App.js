@@ -16,10 +16,6 @@ function App() {
   return (
     <div class="full">
       <Router>
-<<<<<<< HEAD
-=======
-         {/*added Routes here, though worked just fine before*/}
->>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
         <Route path='/:page' component={Navigation} />
         <Route exact path='/' component={Navigation} />
         <Route exact path='/' component={Home} />
@@ -35,10 +31,5 @@ function App() {
     </div>
   );
 }
-<<<<<<< HEAD
 export default App;
 
-=======
-
-export default App;
->>>>>>> ec60f5b41f2aee05ab445d4e3f0f3d98bb3528b4
